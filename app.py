@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 
 app = Flask(__name__)
@@ -24,7 +24,6 @@ def init_db():
     conn.commit()
     conn.close()
 
-
 @app.route("/")
 def index():
     conn = get_conn()
@@ -42,6 +41,30 @@ def buscar():
     conn.close()
     return render_template("index.html", contactos=contactos)
 
+
+@app.route("/agregar", methods=["GET", "POST"])
+def agregar():
+    if request.method == "POST":
+        nombre = request.form["nombre"]
+        telefono = request.form["telefono"]
+        email = request.form["email"]
+        conn = get_conn()
+        conn.execute(
+            "INSERT INTO contactos (nombre, telefono, email) VALUES (?, ?, ?)",
+            (nombre, telefono, email),
+        )
+        conn.commit()
+        conn.close()
+        return redirect(url_for("index"))
+    return render_template("agregar.html")
+
+@app.route("/eliminar/<int:id>")
+def eliminar(id):
+    conn = get_conn()
+    conn.execute("DELETE FROM contactos WHERE id = ?", (id,))
+    conn.commit()
+    conn.close()
+    return redirect(url_for("index"))
 
 if __name__ == "__main__":
     init_db()

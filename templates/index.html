@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agenda de Contactos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Agenda de Contactos</h1>
+    <a href="{{ url_for('agregar') }}" class="btn">+ Agregar contacto</a>
+
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+            <th>Acción</th>
+        </tr>
+        {% for c in contactos %}
+        <tr>
+            <td>{{ c["nombre"] }}</td>
+            <td>{{ c["telefono"] }}</td>
+            <td>{{ c["email"] }}</td>
+            <td><a href="{{ url_for('eliminar', id=c['id']) }}">Eliminar</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

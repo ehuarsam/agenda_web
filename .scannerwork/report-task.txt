@@ -2,5 +2,5 @@ projectKey=agenda_web
 serverUrl=http://localhost:9000
 serverVersion=26.9.0.129388
 dashboardUrl=http://localhost:9000/dashboard?id=agenda_web
-ceTaskId=5bba3e6e-9a95-4403-8c02-64733a349f28
-ceTaskUrl=http://localhost:9000/api/ce/task?id=5bba3e6e-9a95-4403-8c02-64733a349f28
+ceTaskId=065bb8dc-fc7a-4028-9189-a2a276ffdbff
+ceTaskUrl=http://localhost:9000/api/ce/task?id=065bb8dc-fc7a-4028-9189-a2a276ffdbff

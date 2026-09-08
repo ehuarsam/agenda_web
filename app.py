@@ -1,10 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 
-from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
-csrf = CSRFProtect(app)
 
 DB = "database.db"
 

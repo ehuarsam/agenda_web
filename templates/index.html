@@ -8,7 +8,8 @@
 <body>
     <h1>Agenda de Contactos</h1>
     <form method="GET" action="/buscar">
-        <input type="text" name="nombre" placeholder="Buscar por nombre">
+        <label for="nombre-busqueda">Buscar por nombre:</label>
+        <input type="text" id="nombre-busqueda" name="nombre" placeholder="Buscar por nombre">
         <button type="submit">Buscar</button>
     </form>
     <a href="{{ url_for('agregar') }}" class="btn">+ Agregar contacto</a>

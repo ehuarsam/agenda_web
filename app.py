@@ -1,9 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_wtf.csrf import CSRFProtect
+from dotenv import load_dotenv
 import sqlite3
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "cambia-esto-por-una-clave-secreta-larga"
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 csrf = CSRFProtect(app)
 
 DB = "database.db"
